@@ -6,3 +6,5 @@ access_token_secret = 'XXX'
 api_root = 'https://api.twitter.com/1.1/'
 text = 'ごまえー♪'
 pre_text = 'ごまえーbotが起動しました。自動時刻補正を開始します。'
+
+wait_mitues = 2

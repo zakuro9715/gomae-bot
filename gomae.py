@@ -16,9 +16,15 @@ def tweet(text):
 
 if __name__ == '__main__':
     import time
-    from datetime import datetime, timezone
+    from datetime import datetime, timezone, timedelta
     import dateutil.parser
+
     local_time = datetime.now(timezone.utc)
+    
+    target_time = local_time + timedelta(minutes=settings.wait_minutes)
+    target_time = datetime(*(target_time.timetuple()[:5]), tzinfo=timezone.utc)
+    print(target_time)
+    
     server_time = dateutil.parser.parse(tweet(settings.pre_text)['created_at'])
     delta = server_time - local_time
     print('時刻誤差 %s' % delta)
