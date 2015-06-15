@@ -12,3 +12,13 @@ twitter = OAuth1Session(
 def tweet(text):
     params = {'status': text}
     return twitter.post(tweet_url, params).json()
+
+
+if __name__ == '__main__':
+    import time
+    from datetime import datetime, timezone
+    import dateutil.parser
+    local_time = datetime.now(timezone.utc)
+    server_time = dateutil.parser.parse(tweet(settings.pre_text)['created_at'])
+    delta = server_time - local_time
+    print('時刻誤差 %s' % delta)
